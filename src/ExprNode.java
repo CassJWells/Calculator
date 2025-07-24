@@ -24,8 +24,6 @@ public class ExprNode {
     } */
 
     public void printTree(int depth) {
-        if (this == null) return; // optional check
-
         if (right != null) right.printTree(depth + 1);
 
         for (int i = 0; i < depth; i++) System.out.print("    ");
