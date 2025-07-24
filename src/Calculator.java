@@ -31,5 +31,8 @@ class Calculator {
 
         
         root.printTree(0);
+
+        int result = root.evaluate();
+        System.out.println("Result: " + result);
     }
 }

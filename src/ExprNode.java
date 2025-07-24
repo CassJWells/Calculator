@@ -15,13 +15,22 @@ public class ExprNode {
         this.right = null;
     }
 
-    /* boolean isOperator() {
-        return value.equals("+") || value.equals("-") || value.equals("*") || value.equals("/");
-    }
+    public int evaluate() {
+        if (this.left == null && this.right == null) {
+            return Integer.parseInt(this.value); // it's a number
+        }
 
-    boolean isLeaf() {
-        return left == null && right == null;
-    } */
+        int leftVal = this.left.evaluate();
+        int rightVal = this.right.evaluate();
+
+        return switch (this.value) {
+            case "+" -> leftVal + rightVal;
+            case "-" -> leftVal - rightVal;
+            case "*" -> leftVal * rightVal;
+            case "/" -> leftVal / rightVal;
+            default -> throw new IllegalArgumentException("Unknown operator: " + this.value);
+        };
+    }
 
     public void printTree(int depth) {
         if (right != null) right.printTree(depth + 1);
