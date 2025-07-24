@@ -13,9 +13,9 @@ class Calculator {
         for (int i = 0; i < argument.length(); i++) {
             if (OPERATORS.contains(argument.charAt(i))) {
                 tokens.add(String.valueOf(argument.charAt(i)));
-            } else if (Character.isDigit(argument.charAt(i))) {
+            } else if (Character.isDigit(argument.charAt(i)) || argument.charAt(i) == '.') {
                 for (int j = i; j <= argument.length(); j++) {
-                    if (j == argument.length() || !Character.isDigit(argument.charAt(j))) {
+                    if (j == argument.length() || !(Character.isDigit(argument.charAt(j)) || argument.charAt(j) == '.')) {
                         tokens.add(argument.substring(i, j));
                         i = j - 1;
                         break;
@@ -32,7 +32,7 @@ class Calculator {
         
         root.printTree(0);
 
-        int result = root.evaluate();
+        double result = root.evaluate();
         System.out.println("Result: " + result);
     }
 }

@@ -15,13 +15,13 @@ public class ExprNode {
         this.right = null;
     }
 
-    public int evaluate() {
+    public double evaluate() {
         if (this.left == null && this.right == null) {
-            return Integer.parseInt(this.value); // it's a number
+            return Double.parseDouble(this.value); // it's a number
         }
 
-        int leftVal = this.left.evaluate();
-        int rightVal = this.right.evaluate();
+        double leftVal = this.left.evaluate();
+        double rightVal = this.right.evaluate();
 
         return switch (this.value) {
             case "+" -> leftVal + rightVal;
